@@ -1,5 +1,5 @@
 {
-  "name": "nextra",
+  "name": "tondev",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,6 @@
     "start": "next start",
     "build": "next build"
   },
-  "author": "Shu Ding",
   "license": "MIT",
   "dependencies": {
     "next": "^12.1.0",

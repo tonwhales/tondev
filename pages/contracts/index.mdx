@@ -1,0 +1,31 @@
+# Getting started with contracts
+
+The aim of this document is to provide step-by-step instructions for compiling and creating simple smart contract 
+(a simple wallet) in the TON Blockchain Test Network using the TON Blockchain Lite Client and associated software.
+
+### Wallets and Contracts
+
+Everything is a smart contract in TON. Wallets are also just smart contracts with a code of a wallet contract. 
+There are 4 generic versions of a wallet contract in the TON: `simple wallet`, `v2`, `v3` and `v4`. Some of them are also have
+minor revisions.
+
+Right now everyone is slowly migrate to latest `v4` wallets and we recommend to use them too instead of obsolete revisions.
+
+### Chains
+
+TON have two chains: workchain and masterchain. The last one is very expensive and shouldn't be used by anyone except `validators` 
+and other system-level contracts. Workchain is where most contracts should be executing.
+
+TON is scalable in a way that workchain could split into any needed number of shards and execute contracts in parallel.
+
+Before starting to build contracts for TON you need to understand that this shards do not have any shared state and therefore
+there are no way to read other contract's data like you can in Ethereum-based blockchains.
+
+### Contract address
+
+Contract address in TON is a hash of initial Data and Code of a contract. This hash is quite complicated to describe and you should 
+just use libraries for your language for calculations.
+
+Address consists of two values:
+* Number of chain: `0` for workchain, `-1` is for masterchain
+* 256-bit hash of initial code and data
