@@ -1,4 +1,6 @@
 {
   "index": "Introduction",
-  "contracts": "Contracts"
+  "contracts": "Contracts",
+  "recipes": "Recipes",
+  "func": "FunC"
 }

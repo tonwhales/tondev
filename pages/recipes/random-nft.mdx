@@ -1,0 +1,29 @@
+# Random NFT
+
+Often for genuine NFT you need to randomly allocate NFT to a minter. This is a recipe how to allocate random item on each mint without
+wasting too much gas.
+
+```func
+randomize_lt();
+int index = rand(remainint_amount);
+int value = 0;
+
+;; Pick id
+(slice existing, int found) = cache.udict_get?(32, index);
+if (found) {
+  value = existing~load_uint(32);
+} else {
+  value = index;
+}
+
+;; Dict continuity
+(slice tailValue, int foundTail) = cache.udict_get?(32, totalSize - 1);
+if (foundTail) {
+  cache~udict_set(32, index, tailValue);
+} else {
+  cache~udict_set_builder(32, index, begin_cell().store_uint(totalSize - 1, 32));
+}
+
+;; Cleanup tail
+cache~udict_delete?(32, totalSize);
+```
